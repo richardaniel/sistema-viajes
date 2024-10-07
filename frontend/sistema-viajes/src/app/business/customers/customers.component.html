@@ -1,0 +1,52 @@
+<form [formGroup]="collaboratorForm" (ngSubmit)="onSubmit()">
+    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+      <div class="mb-3 space-y-2 w-full text-xs">
+        <label class="font-semibold text-gray-600 py-2">Nombre Colaborador<abbr title="required">*</abbr></label>
+        <input formControlName="name" placeholder="Nombre Colaborador"
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+          required="required" type="text">
+        <p *ngIf="collaboratorForm.get('name')?.invalid && collaboratorForm.get('name')?.touched" class="text-red text-xs">Por favor, ingrese un nombre válido.</p>
+      </div>
+    </div>
+  
+    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+      <div class="mb-3 space-y-2 w-full text-xs">
+        <label class="font-semibold text-gray-600 py-2">Apellido Colaborador<abbr title="required">*</abbr></label>
+        <input formControlName="lastName" placeholder="Apellido Colaborador"
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+          required="required" type="text">
+        <p *ngIf="collaboratorForm.get('lastName')?.invalid && collaboratorForm.get('lastName')?.touched" class="text-red text-xs">Por favor, ingrese un apellido válido.</p>
+      </div>
+    </div>
+  
+    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+      <div class="mb-3 space-y-2 w-full text-xs">
+        <label class="font-semibold text-gray-600 py-2">Correo<abbr title="required">*</abbr></label>
+        <input formControlName="email" placeholder="Correo"
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+          required="required" type="email">
+        <p *ngIf="collaboratorForm.get('email')?.invalid && collaboratorForm.get('email')?.touched" class="text-red text-xs">Por favor, ingrese un correo válido.</p>
+      </div>
+    </div>
+  
+    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+      <div class="mb-3 space-y-2 w-full text-xs">
+        <label class="font-semibold text-gray-600 py-2">Numero Telefono<abbr title="required">*</abbr></label>
+        <input formControlName="phoneNumber" placeholder="0000-0000"
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+          required="required" type="text">
+        <p *ngIf="collaboratorForm.get('phoneNumber')?.invalid && collaboratorForm.get('phoneNumber')?.touched" class="text-red text-xs">Por favor, ingrese un número de teléfono válido.</p>
+      </div>
+    </div>
+  
+    <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+      <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+        Cancel
+      </button>
+      <button [disabled]="collaboratorForm.invalid"
+        class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">
+        Guardar
+      </button>
+    </div>
+  </form>
+  
