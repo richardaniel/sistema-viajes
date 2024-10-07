@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "PIe7B6UXmXtMrL6nPJlFoAxqYhwGucy1XpAvx741TT6difLHLNMTLJGnSd3/B7KURzq0oDy5TGpQuJBD8umB1w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sh4rk\\OneDrive - Universidad Tecnologica Centroamericana\\Escritorio\\sistema-viajes\\backend\\sistema-viajes\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sh4rk\\.nuget\\packages\\erroror\\2.0.1\\erroror.2.0.1.nupkg.sha512",
+    "C:\\Users\\Sh4rk\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\Sh4rk\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Sh4rk\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
