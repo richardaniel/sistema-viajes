@@ -15,13 +15,13 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  errorMessage: string = ''; // Variable para almacenar el mensaje de error
+  errorMessage: string = ''; 
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
     private toastr: ToastrService,
-    private router: Router // Inyectar Router para redirigir después del login
+    private router: Router 
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Inicio de sesión exitoso', 'Éxito');
 
           
-          // Redirigir al panel
+         
           this.router.navigate(['/home']);
         },
         error: (error) => {

@@ -2,10 +2,10 @@ namespace Infrastructure.Persistence.Repositories;
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Domain.Customers;
+using Domain.Collaborators;
 using Microsoft.EntityFrameworkCore;
 
-public class CustomerRepository : ICustomerRepository
+public class CustomerRepository : ICollaboratorRepository
 {
 
     private readonly ApplicationDbContext _context;
@@ -15,14 +15,14 @@ public class CustomerRepository : ICustomerRepository
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public async Task Add(Customer customer)=> await _context.Customers.AddAsync(customer);
+    public async Task Add(Collaborator customer)=> await _context.Customers.AddAsync(customer);
 
-    public async Task<List<Customer>> GetAllAsync()
+    public async Task<List<Collaborator>> GetAllAsync()
     {
         return await _context.Customers.ToListAsync();
     }
 
-    public async Task<Customer?> GetByIdAsync(CustomerId id)=> await _context.Customers.SingleOrDefaultAsync(c=>c.CustomerId==id);
+    public async Task<Collaborator?> GetByIdAsync(CollaboratorId id)=> await _context.Customers.SingleOrDefaultAsync(c=>c.CollaboratorId==id);
 
     
 }

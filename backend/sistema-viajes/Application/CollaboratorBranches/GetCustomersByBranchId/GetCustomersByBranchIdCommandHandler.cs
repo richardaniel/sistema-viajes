@@ -1,5 +1,5 @@
 
-using Domain.Customers;
+using Domain.Collaborators;
 using Domain.CollaboratorBranches;
 using ErrorOr;
 using MediatR;
@@ -8,7 +8,7 @@ using Domain.Primitives;
 
 namespace Application.CollaboratorBranches.GetCustomerByBranchId;
 
-internal sealed class GetCustomersByBranchIdCommandHandler : IRequestHandler<GetCustomersByBranchIdCommand , ErrorOr<List<Customer>>>
+internal sealed class GetCustomersByBranchIdCommandHandler : IRequestHandler<GetCustomersByBranchIdCommand , ErrorOr<List<Collaborator>>>
 {
     private readonly ICollaboratorBranchRepository _collaboratorBranchRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -19,7 +19,7 @@ internal sealed class GetCustomersByBranchIdCommandHandler : IRequestHandler<Get
         _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
     }
 
-    public async Task<ErrorOr<List<Customer>>> Handle(GetCustomersByBranchIdCommand command, CancellationToken cancellationToken)
+    public async Task<ErrorOr<List<Collaborator>>> Handle(GetCustomersByBranchIdCommand command, CancellationToken cancellationToken)
     {
         try
         {

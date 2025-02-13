@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard'; // Importar el guard
-
+import { AuthGuard } from './auth.guard'; 
 const routes: Routes = [
-  // Ruta para login
+  
   {path: 'login', loadComponent: () => import('./login/login.component').then(m=>m.LoginComponent)},
   {path: '', loadComponent: () => import('./login/login.component').then(m=>m.LoginComponent)},
   
@@ -36,9 +35,13 @@ const routes: Routes = [
     },
     {
       path:'collaborator',
-      loadComponent:()=>import('./business/customers/customers.component').then(m=>m.CustomersComponent),
+      loadComponent:()=>import('./business/collaborator/collaborator.component').then(m=>m.CustomersComponent),
       
     },
+    {
+      path:'trip-reports',
+      loadComponent:()=>import('./business/trip-report/trip-report.component').then(m=>m.TripReportComponent),
+    }
     ]
    },
 

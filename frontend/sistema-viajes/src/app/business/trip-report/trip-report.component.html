@@ -1,0 +1,45 @@
+<div class="relative h-screen w-full flex flex-grow items-center justify-center bg-center py-12 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover">
+ 
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat filter  blur-lg z-0"
+        style="background-image: url('https://wallpaperaccess.com/full/3521299.jpg');">
+    </div>
+
+    <div class="relative h-full m-6 w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
+        <div class="grid gap-8 grid-cols-1">
+            <div class="flex flex-col  items-start">
+                <h2 class="font-semibold text-lg ">Reporte de Viajes</h2>
+                <div class="p-8 w-full max-h-96 overflow-y-auto  mt-4 sm:mt-0 ">
+              
+                        <table mat-table [dataSource]="Trips" class="mat-elevation-z8 border-separate border-spacing-0 shadow-lg rounded-2xl">
+                            <!-- Definición de las columnas de la tabla -->
+                            <ng-container matColumnDef="Id">
+                                <th mat-header-cell *matHeaderCellDef class="px-4 py-1 border rounded-tl-2xl ">Id</th>
+                                <td mat-cell *matCellDef="let element" class="px-4 py-2 border-b">{{element.id}}</td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="Transportista">
+                                <th mat-header-cell *matHeaderCellDef class=" px-4 py-1 border">Transportista</th>
+                                <td mat-cell *matCellDef="let element" >{{element.transporter}}</td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="Fecha">
+                                <th mat-header-cell *matHeaderCellDef class=" px-4 py-1 border ">Fecha</th>
+                                <td mat-cell *matCellDef="let element" >{{element.date | date: 'shortDate'}}</td>
+                            </ng-container>
+    
+                            <ng-container matColumnDef="Costo">
+                                <th mat-header-cell *matHeaderCellDef class="px-4 py-1 border rounded-tr-2xl">Costo</th>
+                                <td mat-cell *matCellDef="let element" >{{element.cost | currency}}</td>
+                            </ng-container>
+    
+                            <!-- Fila de encabezado -->
+                            <tr mat-header-row *matHeaderRowDef="displaycolumns" class="bg-sky-500 text-white font-bold "></tr>
+                            <tr mat-row *matRowDef="let row; columns: displaycolumns;" ></tr>
+                        </table>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

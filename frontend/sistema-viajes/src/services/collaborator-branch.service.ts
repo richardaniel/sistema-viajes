@@ -11,6 +11,6 @@ export class CollaboratorBranchService {
   constructor(private http: HttpClient) {}
 
   createCollaboratorBranch(data: CustomerBranch) {
-    return this.http.post<any>(`${this.baseUrl}/collaboratorbranches`, data);
+    return this.http.post<CustomerBranch>(`${this.baseUrl}/collaboratorbranches`, data);
   }
 }

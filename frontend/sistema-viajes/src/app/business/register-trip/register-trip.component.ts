@@ -44,15 +44,16 @@ export class RegisterTripComponent implements OnInit {
   }
 
   onSucursalChange(event: Event) {
-    const selectElement = event.target as HTMLSelectElement; // Afirmación de tipo
-    const branchId = selectElement.value; // Obtiene el valor del select
-    this.Service.getCustomersByBranchId(branchId).subscribe({
+    const selectElement = event.target as HTMLSelectElement; 
+    const branchId = selectElement.value; 
+    console.log(branchId);
+    this.Service.getCollaboratorsByBranchId(branchId).subscribe({
       next: (data) => {
-        this.customers = data; // Almacena los colaboradores
-        console.log(data);
+        this.customers = data; 
+       
       },
       error: (error) => {
-        console.error('Error fetching customers:', error);
+        console.error('Error fetching collaborators:', error);
       },
     });
   }

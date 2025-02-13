@@ -9,14 +9,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterOutlet,RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { TripReportComponent } from './business/trip-report/trip-report.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TripReportComponent,
+    
 
   ],
   imports: [
@@ -31,9 +31,9 @@ import { TripReportComponent } from './business/trip-report/trip-report.componen
         preventDuplicates: true, // Evita notificaciones duplicadas
       }
     ), // Inicializar Toastr
-    BrowserAnimationsModule,// Importar animacion
     RouterOutlet,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration()

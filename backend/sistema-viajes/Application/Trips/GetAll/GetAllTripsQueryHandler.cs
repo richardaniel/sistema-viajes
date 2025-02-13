@@ -4,7 +4,7 @@ using ErrorOr;
 using MediatR;
 
 namespace Application.Trips.GetAll;
-/*
+
 internal sealed class GetAllTripsQueryHandler : IRequestHandler<GetAllTripsQuery, ErrorOr<List<Trip>>>
 {
     private readonly ITripRepository _tripRepository;
@@ -16,8 +16,14 @@ internal sealed class GetAllTripsQueryHandler : IRequestHandler<GetAllTripsQuery
 
     public async Task<ErrorOr<List<Trip>>> Handle(GetAllTripsQuery request, CancellationToken cancellationToken)
     {
-        var trips = await _tripRepository.GetAllAsync();
-        return trips is not null ? trips : new List<Trip>();
+        try
+        {
+            var trips = await _tripRepository.GetAllAsync();
+            return trips;
+        }
+        catch (Exception ex)
+        {
+            return Error.Failure("GetAllTrips.Failure", ex.Message);
+        }
     }
 }
-*/

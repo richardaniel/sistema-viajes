@@ -1,4 +1,4 @@
-using Domain.Customers;
+using Domain.Collaborators;
 using Domain.TripCollaborators;
 using Domain.Trips;
 using Domain.Users;
@@ -21,7 +21,7 @@ public class TripCollaboratorConfiguration : IEntityTypeConfiguration<TripCollab
         builder.Property(tc => tc.TripId).IsRequired();
         builder.Property(tc => tc.CustomerId).HasConversion(
              customerId=>customerId.Value,
-            value=>new CustomerId(value)
+            value=>new CollaboratorId(value)
         ).IsRequired();
         builder.Property(tc => tc.DistanceKm)
             .HasColumnType("decimal(5, 2)") // Especifica el tipo de columna
@@ -40,7 +40,7 @@ public class TripCollaboratorConfiguration : IEntityTypeConfiguration<TripCollab
             .HasForeignKey(tc => tc.TripId)
             .OnDelete(DeleteBehavior.Cascade); // Configura el comportamiento de eliminación
 
-        builder.HasOne<Customer>() // Define la relación con la entidad Collaborator
+        builder.HasOne<Collaborator>() // Define la relación con la entidad Collaborator
             .WithMany() // Si es una relación uno a muchos
             .HasForeignKey(tc => tc.CustomerId)
             .OnDelete(DeleteBehavior.Cascade); // Configura el comportamiento de eliminación

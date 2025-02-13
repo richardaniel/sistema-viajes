@@ -10,3 +10,16 @@ C:\Users\Sh4rk\OneDrive - Universidad Tecnologica Centroamericana\Escritorio\sis
 C:\Users\Sh4rk\OneDrive - Universidad Tecnologica Centroamericana\Escritorio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\Sh4rk\OneDrive - Universidad Tecnologica Centroamericana\Escritorio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\ref\Domain.dll
 C:\Users\Sh4rk\OneDrive - Universidad Tecnologica Centroamericana\Escritorio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\rlopez\Desktop\estudio\sistema-viajes\backend\sistema-viajes\Domain\obj\Debug\net8.0\ref\Domain.dll

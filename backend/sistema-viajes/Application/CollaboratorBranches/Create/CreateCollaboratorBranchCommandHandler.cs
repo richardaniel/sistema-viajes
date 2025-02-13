@@ -1,7 +1,7 @@
 using Application.CollaboratorBranches.Create;
 using Domain.Branches;
 using Domain.CollaboratorBranches;
-using Domain.Customers;
+using Domain.Collaborators;
 using Domain.Primitives;
 using ErrorOr;
 using MediatR;
@@ -35,9 +35,9 @@ internal sealed class CreateCollaboratorBranchCommandHandler : IRequestHandler<C
 
             var collaboratorBranch = new CollaboratorBranch(
                 new CollaboratorBranchId(Guid.NewGuid()),
-                new CustomerId(command.CustomerId),
+                new CollaboratorId(command.CustomerId),
                 new BranchId(command.BranchId),
-                command.DistanceKm
+                command.distanceKm
             );
 
             await _collaboratorBranchRepository.Add(collaboratorBranch);

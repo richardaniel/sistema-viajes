@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Apllication.Data;
 using Domain.Primitives;
-using Domain.Customers;
+using Domain.Collaborators;
 using Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -56,7 +56,7 @@ public static class DependencyInjection{
         services.AddScoped<IUnitOfWork>(sp=>
             sp.GetRequiredService<ApplicationDbContext>());
 
-        services.AddScoped<ICustomerRepository,CustomerRepository>();
+        services.AddScoped<ICollaboratorRepository,CustomerRepository>();
 
        
         services.AddScoped<IUserRepository,UserRepository>();

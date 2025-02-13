@@ -1,6 +1,6 @@
 using Domain.Branches;
 using Domain.CollaboratorBranches;
-using Domain.Customers;
+using Domain.Collaborators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,29 +17,29 @@ public class CollaboratorBranchConfiguration : IEntityTypeConfiguration<Collabor
             value => new CollaboratorBranchId(value)
         );
 
-        builder.Property(cb => cb.CustomerId).HasConversion(
-              customerId=>customerId.Value,
-            value=>new CustomerId(value)
+        builder.Property(cb => cb.CollaboratorId).HasConversion(
+              collaboratorId=>collaboratorId.Value,
+            value=>new CollaboratorId(value)
         ).IsRequired();
 
         builder.Property(cb => cb.BranchId).HasConversion(
                 branchId => branchId.Value,
-                value => new BranchId(value) // Asegúrate de que este tipo sea correcto
+                value => new BranchId(value) 
             ).IsRequired();
         builder.Property(cb => cb.DistanceKm)
-            .HasDefaultValue(0) // Valor por defecto
-            .IsRequired(); // Asegúrate de que este campo sea requerido
+            .HasDefaultValue(0) 
+            .IsRequired();
 
-        builder.HasIndex(cb => new { cb.CustomerId, cb.BranchId }).IsUnique(); // Asegura la unicidad
+        builder.HasIndex(cb => new { cb.CollaboratorId, cb.BranchId }).IsUnique(); 
 
-        builder.HasOne<Customer>() // Define la relación con la entidad Collaborator
-            .WithMany() // Si es una relación uno a muchos
-            .HasForeignKey(cb => cb.CustomerId)
-            .OnDelete(DeleteBehavior.Cascade); // Configura el comportamiento de eliminación
+        builder.HasOne<Collaborator>() 
+            .WithMany() 
+            .HasForeignKey(cb => cb.CollaboratorId)
+            .OnDelete(DeleteBehavior.Cascade); 
 
-        builder.HasOne<Branch>() // Define la relación con la entidad Branch
-            .WithMany() // Si es una relación uno a muchos
+        builder.HasOne<Branch>() 
+            .WithMany() 
             .HasForeignKey(cb => cb.BranchId)
-            .OnDelete(DeleteBehavior.Cascade); // Configura el comportamiento de eliminación
+            .OnDelete(DeleteBehavior.Cascade); 
     }
 }

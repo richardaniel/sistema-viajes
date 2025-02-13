@@ -1,7 +1,7 @@
 using Application.Trips.Create;
 using Domain.Trips;
 using Domain.Branches;
-using Domain.Customers;
+using Domain.Collaborators;
 using Domain.Transporters;
 using Domain.Primitives;
 using ErrorOr;
@@ -12,12 +12,12 @@ namespace Application.Trips.Create;
 internal sealed class CreateTripCommandHandler : IRequestHandler<CreateTripCommand, ErrorOr<Unit>>
 {
     private readonly ITripRepository _tripRepository;
-    private readonly ICustomerRepository _customerRepository; // Repositorio para cargar los Customers
+    private readonly ICollaboratorRepository _customerRepository; // Repositorio para cargar los Customers
     private readonly IUnitOfWork _unitOfWork;
 
     public CreateTripCommandHandler(
         ITripRepository tripRepository,
-        ICustomerRepository customerRepository, // Inyectamos el repositorio de Customers
+        ICollaboratorRepository customerRepository, // Inyectamos el repositorio de Customers
         IUnitOfWork unitOfWork)
     {
         _tripRepository = tripRepository ?? throw new ArgumentNullException(nameof(tripRepository));
@@ -36,10 +36,10 @@ internal sealed class CreateTripCommandHandler : IRequestHandler<CreateTripComma
             }
 
             // Cargar la lista completa de Customers desde los CustomerId
-            var customers = new List<Customer>();
+            var customers = new List<Collaborator>();
             foreach (var customerId in command.CustomerId)
             {
-                var customer = await _customerRepository.GetByIdAsync(new CustomerId(customerId));
+                var customer = await _customerRepository.GetByIdAsync(new CollaboratorId(customerId));
                 if (customer is null)
                 {
                     return Error.NotFound("Customer.NotFound", $"Customer with ID {customerId} not found");

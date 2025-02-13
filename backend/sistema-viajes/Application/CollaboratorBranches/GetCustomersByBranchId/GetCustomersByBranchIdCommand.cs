@@ -1,4 +1,5 @@
-using Domain.Customers;
+using Domain.Branches;
+using Domain.Collaborators;
 using ErrorOr;
 using MediatR;
 using System;
@@ -6,4 +7,4 @@ using System.Collections.Generic;
 
 namespace Application.CollaboratorBranches.GetCustomerByBranchId;
 
-public record GetCustomersByBranchIdCommand(Guid BranchId) : IRequest<ErrorOr<List<Customer>>>;
+public record GetCustomersByBranchIdCommand(Guid BranchId) : IRequest<ErrorOr<List<Collaborator>>>;

@@ -36,15 +36,16 @@ export class ApiService {
   logout(): void {
     this.storageService.removeItem('token');
   }
+
   getAllCustomers(): Observable<any> {
-    return this.http.get<any[]>(`${this.baseUrl}/customers`);
+    return this.http.get<any[]>(`${this.baseUrl}/collaborators`);
   }
 
   getAllBranches():Observable<any>{
     return this.http.get<any[]>(`${this.baseUrl}/branches`);
   }
 
-  getCustomersByBranchId(branchId: string): Observable<Customer[]> {
-    return this.http.get<Customer[]>(`${this.baseUrl}/branches/${branchId}/customers`);
+  getCollaboratorsByBranchId(branchId: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(`${this.baseUrl}/CollaboratorBranches/branches/${branchId}/collaborators`);
   }
 }

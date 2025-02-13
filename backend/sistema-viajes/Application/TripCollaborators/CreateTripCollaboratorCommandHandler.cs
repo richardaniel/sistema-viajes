@@ -4,7 +4,7 @@ using Domain.Primitives;
 using ErrorOr;
 using MediatR;
 using Domain.Trips;
-using Domain.Customers;
+using Domain.Collaborators;
 
 namespace Application.TripCollaborators.Create;
 
@@ -26,7 +26,7 @@ internal sealed class CreateTripCollaboratorCommandHandler : IRequestHandler<Cre
             var tripCollaborator = new TripCollaborator(
                 new TripCollaboratorId(Guid.NewGuid()), // Asignar 0 para la identidad, se generará al guardar
                 new TripId(Guid.NewGuid()),
-                new CustomerId(Guid.NewGuid()),
+                new CollaboratorId(Guid.NewGuid()),
                 command.DistanceKm,
                 command.Cost
             );

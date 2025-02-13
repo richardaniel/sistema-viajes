@@ -12,6 +12,6 @@ export class CollaboratorService {
   constructor(private http: HttpClient) {}
 
   createCollaborator(data: Customer) {
-    return this.http.post<any>(`${this.baseUrl}/customers`, data);
+    return this.http.post<any>(`${this.baseUrl}/collaborators`, data);
   }
 }

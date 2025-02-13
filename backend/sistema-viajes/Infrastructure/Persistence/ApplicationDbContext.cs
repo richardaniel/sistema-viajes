@@ -1,7 +1,7 @@
 using Apllication.Data;
 using Domain.Branches;
 using Domain.CollaboratorBranches;
-using Domain.Customers;
+using Domain.Collaborators;
 using Domain.Primitives;
 using Domain.Transporters;
 using Domain.TripCollaborators;
@@ -21,7 +21,7 @@ public class ApplicationDbContext : DbContext ,IApplicationDbContext ,IUnitOfWor
         _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
     }
 
-    public DbSet<Customer> Customers {get;set;}
+    public DbSet<Collaborator> Customers {get;set;}
     public DbSet<User> Users {get;set;}
 
     public DbSet<Trip> Trips {get;set;}

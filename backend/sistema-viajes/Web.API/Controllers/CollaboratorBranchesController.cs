@@ -1,6 +1,7 @@
-using Application.Branches.GetAll;
+
 using Application.CollaboratorBranches.Create;
 using Application.CollaboratorBranches.GetCustomerByBranchId;
+using Domain.Branches;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,12 +18,19 @@ public class CollaboratorBranchesController : ApiController
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
     }
 
-    [HttpGet("branches/{branchId}/customers")]
-public async Task<IActionResult> GetCustomersForBranch(Guid branchId)
-{
-    var customers = await _mediator.Send(new GetCustomersByBranchIdCommand(branchId));
-    return Ok(customers);
-}
+    [HttpGet("branches/{branchId}/collaborators")]
+    public async Task<IActionResult> GetCustomersForBranch([FromRoute] string branchId)
+    {
+        Guid branchIdGuid = Guid.Parse(branchId);
+        var result = await _mediator.Send(new GetCustomersByBranchIdCommand(branchIdGuid));
+        
+
+        if (result.IsError)
+        {
+            return BadRequest(result.Errors);
+        }
+        return Ok(result.Value);
+    }
 
 
 
@@ -40,14 +48,14 @@ public async Task<IActionResult> GetCustomersForBranch(Guid branchId)
     }*/
 
     [HttpPost]
-public async Task<IActionResult> CreateCollaboratorBranch([FromBody]CreateCollaboratorBranchCommand command)
-{
-    var result = await _mediator.Send(command);
-    if (result.IsError)
+    public async Task<IActionResult> CreateCollaboratorBranch([FromBody]CreateCollaboratorBranchCommand command)
     {
+        var result = await _mediator.Send(command);
+        if (result.IsError)
+        {
         return BadRequest(result.Errors);
+        }
+        return Ok(result.Value);
     }
-    return Ok(result.Value);
-}
 
 }

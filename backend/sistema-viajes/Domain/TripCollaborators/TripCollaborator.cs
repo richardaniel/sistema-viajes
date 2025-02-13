@@ -1,4 +1,4 @@
-using Domain.Customers;
+using Domain.Collaborators;
 using Domain.Primitives;
 using Domain.Trips;
 
@@ -7,7 +7,7 @@ namespace Domain.TripCollaborators;
 
 public sealed class TripCollaborator : AggregateRoot
 {
-    public TripCollaborator(TripCollaboratorId id, TripId tripId, CustomerId customerId, decimal distanceKm, decimal cost)
+    public TripCollaborator(TripCollaboratorId id, TripId tripId, CollaboratorId customerId, decimal distanceKm, decimal cost)
     {
         Id = id;
         TripId = tripId;
@@ -22,7 +22,7 @@ public sealed class TripCollaborator : AggregateRoot
 
     public TripId TripId { get; private set; }
 
-    public CustomerId CustomerId{ get; private set; }
+    public CollaboratorId CustomerId{ get; private set; }
 
     public decimal DistanceKm { get; private set; }
 

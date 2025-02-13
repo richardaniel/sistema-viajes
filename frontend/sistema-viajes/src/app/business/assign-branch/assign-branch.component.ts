@@ -27,20 +27,20 @@ export class AssignBranchComponent implements OnInit {
     this.assignBranchForm = this.fb.group({
       customerId: ['', Validators.required],
       branchId: ['', Validators.required],
-      distanciaKm: ['', [Validators.required, Validators.min(1), Validators.max(50)]],
+      distanceKm: [0, [Validators.required, Validators.min(1), Validators.max(50)]],
     },
     );
   } 
   ngOnInit(): void {
     this.loadCustomers();
     this.loadBranches();
-    this.assignBranchForm;
+    
   }
   loadBranches(): void {
     this.Service.getAllBranches().subscribe({
       next: (data) => {
         this.branches = data;
-        console.log(data)
+        
         
       },
       error: (error) => {
@@ -55,7 +55,7 @@ export class AssignBranchComponent implements OnInit {
 
         this.customers = data;
       
-        console.log(data)
+        
         
 
       },
@@ -70,9 +70,6 @@ export class AssignBranchComponent implements OnInit {
     if (this.assignBranchForm.valid) {
       const formData: CustomerBranch = this.assignBranchForm.value;
 
-
-      
-      console.log("Datos a enviar",formData);
       this.collaboratorBranchService.createCollaboratorBranch(formData).subscribe({
         next: (response) => {
           console.log('Colaborador asignado correctamente', response)

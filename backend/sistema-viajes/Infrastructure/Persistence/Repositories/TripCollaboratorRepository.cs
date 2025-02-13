@@ -24,5 +24,5 @@ public class TripCollaboratorRepository : ITripCollaboratorRepository
             .SingleOrDefaultAsync(tc => tc.Id == id);
     }
 
-    // Aquí puedes agregar más métodos según sea necesario
+   
 }

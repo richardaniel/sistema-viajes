@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
-using Domain.Customers;
+using Domain.Branches;
+using Domain.Collaborators;
 
 namespace Domain.CollaboratorBranches;
 
@@ -10,5 +11,5 @@ public interface ICollaboratorBranchRepository
 
     Task<bool> IsCustomerBranchAssociatedAsync(Guid customerId, Guid branchId);
 
-    Task<List<Customer>> GetCustomersByBranchIdAsync(Guid branchId);
+    Task<List<Collaborator>> GetCustomersByBranchIdAsync(Guid branchId);
 }

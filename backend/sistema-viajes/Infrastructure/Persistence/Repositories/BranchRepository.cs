@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Domain.Branches;
-using Domain.Customers;
+using Domain.Collaborators;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;
@@ -30,14 +30,14 @@ public class BranchRepository : IBranchRepository
     }
 
 
-    public async Task<List<Customer>> GetCustomersByBranchIdAsync(Guid branchId)
+    public async Task<List<Collaborator>> GetCustomersByBranchIdAsync(Guid branchId)
 {
     return await _context.CollaboratorBranches
         .Where(cb => cb.BranchId.Value == branchId) // Filtrar por BranchId
-        .Select(cb => cb.CustomerId) // Obtener solo el CustomerId
+        .Select(cb => cb.CollaboratorId) // Obtener solo el CustomerId
         .Join(_context.Customers, // Hacer join con la tabla Customers
               customerId => customerId,
-              customer => customer.CustomerId,
+              customer => customer.CollaboratorId,
               (customerId, customer) => customer) // Proyectar el Customer
         .ToListAsync();
 }

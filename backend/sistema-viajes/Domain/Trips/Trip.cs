@@ -1,13 +1,13 @@
 using Domain.Primitives;
 using Domain.Transporters;
 using Domain.Branches;
-using Domain.Customers;
+using Domain.Collaborators;
 
 namespace Domain.Trips;
 
 public sealed class Trip : AggregateRoot
 {
-    public Trip(TripId id, BranchId branchId, TransporterId transporterId, DateTime tripDate, List<Customer> customers, decimal totalDistance, decimal totalCost)
+    public Trip(TripId id, BranchId branchId, TransporterId transporterId, DateTime tripDate, List<Collaborator> customers, decimal totalDistance, decimal totalCost)
     {
         Id = id;
         BranchId = branchId;
@@ -28,7 +28,7 @@ public sealed class Trip : AggregateRoot
 
     public DateTime TripDate { get; private set; }
 
-    public List<Customer> Customers{ get; private set; }
+    public List<Collaborator> Customers{ get; private set; }
 
     public decimal TotalDistance { get; private set; }
 

@@ -1,7 +1,10 @@
 using System.Threading.Tasks;
+using Domain.Branches;
 using Domain.CollaboratorBranches;
-using Domain.Customers;
+using Domain.Collaborators;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 
 namespace Infrastructure.Persistence.Repositories;
 
@@ -29,20 +32,31 @@ public class CollaboratorBranchRepository : ICollaboratorBranchRepository
      public async Task<bool> IsCustomerBranchAssociatedAsync(Guid customerId, Guid branchId)
     {
         return await _context.CollaboratorBranches
-            .AnyAsync(cb => cb.CustomerId.Equals(customerId)  && cb.BranchId.Equals(branchId));
+            .AnyAsync(cb => cb.CollaboratorId.Equals(customerId)  && cb.BranchId.Equals(branchId));
     }
-    
-    public async Task<List<Customer>> GetCustomersByBranchIdAsync(Guid branchId)
-{
-    return await _context.CollaboratorBranches
-        .Where(cb => cb.BranchId.Value == branchId) // Filtrar por BranchId
-        .Select(cb => cb.CustomerId) // Obtener solo el CustomerId
-        .Join(_context.Customers, // Hacer join con la tabla Customers
-              customerId => customerId,
-              customer => customer.CustomerId,
-              (customerId, customer) => customer)// Proyectar el Customer
-        .ToListAsync();
-}
+
+    public async Task<List<Collaborator>> GetCustomersByBranchIdAsync(Guid branchId)
+    {
+
+        BranchId nuevaVariable = new BranchId(branchId);
+
+        var customerIds = await _context.CollaboratorBranches
+            .Where(cb => cb.BranchId == nuevaVariable)
+            .Select(cb => cb.CollaboratorId)
+            .ToListAsync();
+
+
 
     
+        var collaborators = await _context.Customers
+            .Where(c=>customerIds.Contains(c.CollaboratorId))
+            .ToListAsync();
+
+        return collaborators;
+    }
+
+
+
+
+
 }

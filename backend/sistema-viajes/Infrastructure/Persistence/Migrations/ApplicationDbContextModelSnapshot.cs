@@ -50,28 +50,27 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<Guid>("BranchId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("CollaboratorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("DistanceKm")
                         .ValueGeneratedOnAdd()
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5, 2)")
+                        .HasColumnType("decimal(18,2)")
                         .HasDefaultValue(0m);
 
                     b.HasKey("Id");
 
                     b.HasIndex("BranchId");
 
-                    b.HasIndex("CustomerId", "BranchId")
+                    b.HasIndex("CollaboratorId", "BranchId")
                         .IsUnique();
 
                     b.ToTable("CollaboratorBranches");
                 });
 
-            modelBuilder.Entity("Domain.Customers.Customer", b =>
+            modelBuilder.Entity("Domain.Collaborators.Collaborator", b =>
                 {
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("CollaboratorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Active")
@@ -100,7 +99,7 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<Guid?>("TripId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("CollaboratorId");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -228,14 +227,14 @@ namespace Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Customers.Customer", null)
+                    b.HasOne("Domain.Collaborators.Collaborator", null)
                         .WithMany()
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("CollaboratorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Customers.Customer", b =>
+            modelBuilder.Entity("Domain.Collaborators.Collaborator", b =>
                 {
                     b.HasOne("Domain.Trips.Trip", null)
                         .WithMany("Customers")
@@ -244,7 +243,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.TripCollaborators.TripCollaborator", b =>
                 {
-                    b.HasOne("Domain.Customers.Customer", null)
+                    b.HasOne("Domain.Collaborators.Collaborator", null)
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)

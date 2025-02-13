@@ -15,9 +15,9 @@ public class TripRepository : ITripRepository
 
     public async Task Add(Trip trip) => await _context.Trips.AddAsync(trip);
 
-    public Task<Trip> GetAllAsync()
+    public async Task<List<Trip>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Trips.ToListAsync();
     }
 
     public async Task<Trip?> GetByIdAsync(TripId id) => 

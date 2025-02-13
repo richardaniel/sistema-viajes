@@ -1,5 +1,5 @@
 using Domain.Branches;
-using Domain.Customers;
+using Domain.Collaborators;
 using Domain.Primitives;
 using Domain.ValueObjects;
 
@@ -7,10 +7,10 @@ namespace Domain.CollaboratorBranches;
 
 public sealed class CollaboratorBranch : AggregateRoot
 {
-    public CollaboratorBranch(CollaboratorBranchId id,CustomerId customerId, BranchId branchId, decimal distanceKm)
+    public CollaboratorBranch(CollaboratorBranchId id,CollaboratorId collaboratorId, BranchId branchId, decimal distanceKm)
     {
         Id = id;
-        CustomerId = customerId;
+        CollaboratorId = collaboratorId;
         BranchId = branchId;
         DistanceKm = distanceKm;
     }
@@ -19,7 +19,7 @@ public sealed class CollaboratorBranch : AggregateRoot
 
     public CollaboratorBranchId Id { get; private set; }
 
-    public CustomerId CustomerId{ get; private set; }
+    public CollaboratorId CollaboratorId{ get; private set; }
 
     public BranchId BranchId { get; private set; }
 
